@@ -1,15 +1,18 @@
 package acciones;
 
-import objetos.Batallon;
 import unidades.Personaje;
 
-public class AccionEnGuardia implements Accion{
-	@Override
-	public void ejecutar(Personaje jugador,Batallon batallon_1,Batallon batallon_2){
-		System.out.println("en guardia: aumentando la energia 20%");
-		
-		
-		
-	}
+public class AccionEnGuardia extends Accion{
 
+	Personaje usuario;
+	
+	public AccionEnGuardia(Personaje usuario) {
+		this.usuario = usuario;
+	}
+	
+	@Override
+	public void ejecutar() {
+		System.out.println("se puso en guardia recuperando parte de la estamina");
+	}
+	
 }

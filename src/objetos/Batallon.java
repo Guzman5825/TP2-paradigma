@@ -34,24 +34,31 @@ public class Batallon {
 
 	public void accion(Batallon batallon_2) {
 		Personaje lanzador = obtenerJugadorActual();
-		System.out.println("turno de :" + lanzador);
+		System.out.println("Turno: " + lanzador);
+		System.out.println("Estado: " + lanzador.obtenerEstado());
+		
 		if (lanzador.puedeJugar()) {
-				///en el objetivo hay que ver si llamo a liado o enemigo
-			lanzador.pensarMejorEstrategia();	///prolog , batallon 1 y 2 mandar por parametros
 			
-			
+			///en el objetivo hay que ver si llamo a liado o enemigo
 			///si es hechizo curacion , ayudar aliado
 			///si es hechizo de ataque, lanzarlo a enemigo
 			///el objetivo varia segun el tipo de hechizo que voy a mandar
 			//Personaje objetivo = lanzador.pensarObjetivo(batallon_1,batallon_2);
+			
 			Personaje objetivo= batallon_2.obtenerJugadorActual(); /*  OBTENER DE FORMA RANDOM*/
 			
-			System.out.println(lanzador.getNombre()+ " ejecuto "+ lanzador.getNombreHechizo() 
-							+ " a "+objetivo.getNombre());
+			lanzador.pensarAccion(objetivo);
+			
+			lanzador.pensarHechizo(objetivo);	///prolog , batallon 1 y 2 mandar por parametros
+			
+			//System.out.println(lanzador.getNombre()+ " ejecuto "+ lanzador.getNombreHechizo() 
+			//				+ " a "+objetivo.getNombre());
 			
 			
-			lanzador.accionarEstrategia(objetivo);	///	
+			//lanzador.ejecutarHechizo();	//
 
+			lanzador.ejecutarAccion();
+			
 			if(objetivo.estaMuerto()) {
 				System.out.println("!!!"+objetivo.getNombre()+" ha muerto !!!");
 				batallon_2.eliminar(objetivo);

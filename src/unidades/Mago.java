@@ -1,19 +1,21 @@
 package unidades;
 
-public class Mago extends Personaje{
+import acciones.*;
 
-	private Mago(String nombre, String tipo, double vidaMaxima, double energiaMaxima, double ataque) {
-		super(nombre, tipo, vidaMaxima, energiaMaxima, ataque);
-		// TODO Auto-generated constructor stub
+public abstract class Mago extends Personaje{
+	
+	protected Mago(String nombre, String tipo, double vidaMaxima, double energiaMaxima) {
+		super(nombre, tipo, vidaMaxima, energiaMaxima);
 	}
 	
-	public static Mago crearMagoNormal() {	///factory???
-		return new Mago("mago normal","normal",100,100,20); 
-	}
+	@Override
+	public void pensarAccion(Personaje objetivo) {
+		///en guardia cuando tiene 20 de hp o no tiene mas de energia 
 
-	public static Mago crearMagoNormalConNombre(String nombre) {	///factory???
-		return new Mago(nombre,"normal",100,100,20); 
+		if(tienePocaVida())
+			this.accion= new AccionEnGuardia(this);
+		else
+			this.accion=new AccionLanzarHechizo(this,objetivo);
 	}
-
 	
 }

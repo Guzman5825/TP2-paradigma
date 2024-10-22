@@ -2,17 +2,24 @@ package hechizos;
 
 import unidades.Personaje;
 
-public class Expeliarmus implements Hechizo {
+public class Expeliarmus extends HechizoAtaque {
 	
-	@Override
-	public void ejecutar(Personaje lanzador, Personaje objetivo) {
-		objetivo.recibirDaño(30);
-		System.out.println(objetivo.getNombre() +" recibio 30 de danio");
+	public Expeliarmus(Personaje lanzador, Personaje objetivo) {
+		super(lanzador, objetivo);
+	}
+
+	public String getNombre() {
+		return "EXPELIARMUS";
+	}
+
+	public void ejecutar() {
+		super.objetivo.recibirDaño(30);	///esto es por la clase padre
+		System.out.println(super.objetivo.getNombre() +" recibio 30 de danio");
 	}
 
 	@Override
-	public String nombre() {
-		return "EXPELIARMUS";
+	public double getCosto() {
+		return 30.0;
 	}
 	
 }

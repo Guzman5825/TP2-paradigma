@@ -1,5 +1,6 @@
 package objetos;
 
+import unidades.FabricaPersonajes;
 import unidades.Mago;
 
 public class Juego {
@@ -16,12 +17,15 @@ public class Juego {
 	public void cargarDatos(){	///aca se da todos los datos que necesitamos 
 		///leer batallon 2 y agregar jugadores
 		///aca se cargar a los magos 
-		batallon_1.agregarUnidad(Mago.crearMagoNormalConNombre("mago brincas"));
-		batallon_1.agregarUnidad(Mago.crearMagoNormalConNombre("mago dormun"));
+		batallon_1.agregarUnidad(FabricaPersonajes.crearProfesorPromedio("mago brincas"));
+		batallon_1.agregarUnidad(FabricaPersonajes.crearProfesorPromedio("mago dormun"));
+
 		///leer batallon 2 y agregar jugadores
-		batallon_2.agregarUnidad(Mago.crearMagoNormalConNombre("mago npc1"));
-		batallon_2.agregarUnidad(Mago.crearMagoNormalConNombre("mago npc2"));
-		batallon_2.agregarUnidad(Mago.crearMagoNormalConNombre("mago npc3"));
+		batallon_2.agregarUnidad(FabricaPersonajes.crearProfesorPromedio("prof 1"));
+		batallon_2.agregarUnidad(FabricaPersonajes.crearProfesorPromedio("prof 2"));
+		batallon_2.agregarUnidad(FabricaPersonajes.crearProfesorPromedio("prof 3"));
+
+
 	}
 
 	public void jugar() {
